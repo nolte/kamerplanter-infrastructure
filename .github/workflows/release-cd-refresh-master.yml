@@ -1,0 +1,13 @@
+on:
+  release:
+    types: [published]
+
+jobs:
+  refresh_presentation_branch:
+    uses: nolte/gh-plumbing/.github/workflows/reusable-release-cd-refresh-master.yml@9048eafc8665611b8109e8c5a519b78e0fceffa6 # v2.2.1
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
+    with:
+      target_branch: main
+    permissions:
+      contents: write

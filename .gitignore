@@ -1,0 +1,48 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+.terraform.lock.hcl
+
+# Claude Code — local / user-specific
+.claude/settings.local.json
+.claude/*.local.json
+
+# Resume scratch — in-flight skill/agent state per spec/claude/resumable-work/
+/.resume/
+
+# Audit artifacts
+/.audits/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Python (pre-commit and the docs toolchain run in a project-local venv)
+__pycache__/
+*.py[cod]
+.venv/
+
+# MkDocs build output
+/site/
+
+# Task runner cache
+.task/
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store

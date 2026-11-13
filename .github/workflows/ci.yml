@@ -1,0 +1,93 @@
+name: ci
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    # Job names are the status-check contexts `.github/settings.yml` declares
+    # under `branches[develop].required_status_checks`. Kept free of spaces;
+    # renaming a job renames its context and silently drops it from the
+    # required set — change both files together.
+    name: pre-commit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Read tool versions
+        id: versions
+        run: |
+          echo "terraform=$(awk '$1 == "terraform" {print $2}' .tool-versions)" >> "$GITHUB_OUTPUT"
+          echo "tflint=$(awk '$1 == "tflint" {print $2}' .tool-versions)" >> "$GITHUB_OUTPUT"
+
+      - uses: hashicorp/setup-terraform@dfe3c3f87815947d99a8997f908cb6525fc44e9e # v4.0.1
+        with:
+          terraform_version: ${{ steps.versions.outputs.terraform }}
+          terraform_wrapper: false
+
+      - uses: terraform-linters/setup-tflint@6ffdbaa3be476b3431f7275c26966ef32ff60337 # v6.3.2
+        with:
+          tflint_version: v${{ steps.versions.outputs.tflint }}
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: '3.14'
+
+      - name: Install the tooling install set
+        run: pip install -r requirements-dev.txt
+
+      # Same hooks `task lint` runs locally. tflint downloads its ruleset
+      # plugin from GitHub; the token avoids the anonymous rate limit.
+      - name: Run every hook
+        run: pre-commit run --all-files --show-diff-on-failure
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+  test:
+    name: terraform-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Read tool versions
+        id: versions
+        run: echo "terraform=$(awk '$1 == "terraform" {print $2}' .tool-versions)" >> "$GITHUB_OUTPUT"
+
+      - uses: hashicorp/setup-terraform@dfe3c3f87815947d99a8997f908cb6525fc44e9e # v4.0.1
+        with:
+          terraform_version: ${{ steps.versions.outputs.terraform }}
+          terraform_wrapper: false
+
+      # Same commands `task test` runs locally.
+      - name: Run the module tests
+        working-directory: tests
+        run: |
+          terraform init -input=false -backend=false
+          terraform test -test-directory=.
+
+  docs:
+    name: docs-build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: '3.14'
+
+      - name: Install the docs toolchain
+        run: pip install -r docs/requirements.txt
+
+      # Same command `task docs` runs locally, so a local pass matches CI.
+      - name: Build the site
+        run: mkdocs build --strict

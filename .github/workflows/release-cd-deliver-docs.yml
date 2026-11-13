@@ -1,0 +1,18 @@
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish_docs:
+    uses: nolte/gh-plumbing/.github/workflows/reusable-mkdocs.yaml@9048eafc8665611b8109e8c5a519b78e0fceffa6 # v2.2.1
+    with:
+      requirements: docs/requirements.txt
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
+    permissions:
+      contents: write
+      id-token: write
+      pages: write
+    concurrency:
+      cancel-in-progress: true
+      group: "pages"

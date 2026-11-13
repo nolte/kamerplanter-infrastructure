@@ -1,0 +1,10 @@
+node_name         = "pve"
+appliance_version = "0.1.0"
+image_url         = "https://github.com/nolte/kamerplanter-appliance/releases/download/v0.1.0/disk.raw"
+image_checksum    = "<sha256 from the release checksum file>"
+
+# Optional
+# vm_datastore_id = "local-lvm"
+# ipv4_address    = "192.168.1.50/24"
+# ipv4_gateway    = "192.168.1.1"
+ssh_public_keys = ["ssh-ed25519 AAAA... admin@example"]
