@@ -1,0 +1,3 @@
+# Override for the release-notes-curate skill (spec/project/release-skill-layer/).
+# Autodetection has no signal for Terraform module repositories.
+project_type: terraform-module-library

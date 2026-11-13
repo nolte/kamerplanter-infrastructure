@@ -72,6 +72,7 @@ plugins:
           nav_translations:
             Home: Startseite
             Getting Started: Erste Schritte
+            Guides: Anleitungen
             References: Referenzen
 
   # Lets a page quote a canonical source instead of a frozen copy. Include
@@ -120,12 +121,22 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/nolte/kamerplanter-infrastructure
 
-# Guides, ADRs and Project are further standard sections; they stay out until
-# the repository carries the corresponding content (spec/project/mkdocs-structure/
+# ADRs and Project are further standard sections; they stay out until the
+# repository carries the corresponding content (spec/project/mkdocs-structure/
 # §Top-level navigation: an empty section is a reader trap).
 nav:
   - Home: en/index.md
   - Getting Started:
       - en/getting-started/index.md
+      - en/getting-started/proxmox.md
+  - Guides:
+      - en/guides/index.md
+      - en/guides/network.md
+      - en/guides/own-configuration.md
+      - en/guides/lifecycle.md
+      - en/guides/troubleshooting.md
   - References:
       - en/references/index.md
+      - en/references/proxmox-appliance-image.md
+      - en/references/proxmox-appliance-vm.md
+      - en/references/proxmox-example.md

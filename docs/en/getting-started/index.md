@@ -8,4 +8,8 @@ last_updated: 2026-11-13
 
 # Getting Started
 
-Placeholder: deploying the appliance on Proxmox VE with `src/scripts/proxmox`.
+Start here if you want a running Kamerplanter appliance and have not used these modules before.
+
+- [Deploy on Proxmox VE](proxmox.md): from an empty Proxmox VE node to the Kamerplanter web UI with the ready-to-use configuration in `src/scripts/proxmox`.
+
+Guides for other providers follow once their modules exist. Small private hardware such as a mini PC needs no infrastructure code: write the appliance image to a USB stick and boot it, as described in the [appliance documentation](https://github.com/nolte/kamerplanter-appliance).

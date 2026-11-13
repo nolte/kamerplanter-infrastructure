@@ -9,7 +9,9 @@ Example root configuration that deploys the appliance as a VM on a Proxmox VE no
 
 - Proxmox VE 8.4 or later (import of disk images through the API)
 - A directory-based datastore with the content type **Import** enabled, e.g. `local` (Datacenter → Storage → Edit → Content)
-- An API token with the rights to download files, create VMs, and allocate disks, e.g. on `/` with the roles `PVEVMAdmin` and `PVEDatastoreAdmin`
+- An API token with the rights to create VMs and allocate disks (e.g. the roles `PVEVMAdmin`, `PVEDatastoreAdmin`, and `PVESDNUser` on `/`) and to download files onto the node (`Sys.AccessNetwork` on `/nodes/<node>`)
+
+The [Proxmox VE tutorial](https://nolte.github.io/kamerplanter-infrastructure/getting-started/proxmox/) walks through these steps with the exact `pvesm` and `pveum` commands.
 
 ## Usage
 
