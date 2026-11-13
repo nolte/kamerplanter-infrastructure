@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>https://nolte.github.io/kamerplanter-infrastructure/</loc>
+        <lastmod>2026-11-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://nolte.github.io/kamerplanter-infrastructure/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://nolte.github.io/kamerplanter-infrastructure/de/"/>
+    </url>
+    <url>
+        <loc>https://nolte.github.io/kamerplanter-infrastructure/getting-started/</loc>
+        <lastmod>2026-11-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://nolte.github.io/kamerplanter-infrastructure/getting-started/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://nolte.github.io/kamerplanter-infrastructure/de/getting-started/"/>
+    </url>
+    <url>
+        <loc>https://nolte.github.io/kamerplanter-infrastructure/getting-started/proxmox/</loc>
+        <lastmod>2026-11-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://nolte.github.io/kamerplanter-infrastructure/getting-started/proxmox/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://nolte.github.io/kamerplanter-infrastructure/de/getting-started/proxmox/"/>
+    </url>
+    <url>
+        <loc>https://nolte.github.io/kamerplanter-infrastructure/guides/</loc>
+        <lastmod>2026-11-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://nolte.github.io/kamerplanter-infrastructure/guides/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://nolte.github.io/kamerplanter-infrastructure/de/guides/"/>
+    </url>
+    <url>
+        <loc>https://nolte.github.io/kamerplanter-infrastructure/guides/lifecycle/</loc>
+        <lastmod>2026-11-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://nolte.github.io/kamerplanter-infrastructure/guides/lifecycle/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://nolte.github.io/kamerplanter-infrastructure/de/guides/lifecycle/"/>
+    </url>
+    <url>
+        <loc>https://nolte.github.io/kamerplanter-infrastructure/guides/network/</loc>
+        <lastmod>2026-11-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://nolte.github.io/kamerplanter-infrastructure/guides/network/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://nolte.github.io/kamerplanter-infrastructure/de/guides/network/"/>
+    </url>
+    <url>
+        <loc>https://nolte.github.io/kamerplanter-infrastructure/guides/own-configuration/</loc>
+        <lastmod>2026-11-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://nolte.github.io/kamerplanter-infrastructure/guides/own-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://nolte.github.io/kamerplanter-infrastructure/de/guides/own-configuration/"/>
+    </url>
+    <url>
+        <loc>https://nolte.github.io/kamerplanter-infrastructure/guides/troubleshooting/</loc>
+        <lastmod>2026-11-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://nolte.github.io/kamerplanter-infrastructure/guides/troubleshooting/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://nolte.github.io/kamerplanter-infrastructure/de/guides/troubleshooting/"/>
+    </url>
+    <url>
+        <loc>https://nolte.github.io/kamerplanter-infrastructure/references/</loc>
+        <lastmod>2026-11-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://nolte.github.io/kamerplanter-infrastructure/references/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://nolte.github.io/kamerplanter-infrastructure/de/references/"/>
+    </url>
+    <url>
+        <loc>https://nolte.github.io/kamerplanter-infrastructure/references/proxmox-appliance-image/</loc>
+        <lastmod>2026-11-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://nolte.github.io/kamerplanter-infrastructure/references/proxmox-appliance-image/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://nolte.github.io/kamerplanter-infrastructure/de/references/proxmox-appliance-image/"/>
+    </url>
+    <url>
+        <loc>https://nolte.github.io/kamerplanter-infrastructure/references/proxmox-appliance-vm/</loc>
+        <lastmod>2026-11-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://nolte.github.io/kamerplanter-infrastructure/references/proxmox-appliance-vm/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://nolte.github.io/kamerplanter-infrastructure/de/references/proxmox-appliance-vm/"/>
+    </url>
+    <url>
+        <loc>https://nolte.github.io/kamerplanter-infrastructure/references/proxmox-example/</loc>
+        <lastmod>2026-11-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://nolte.github.io/kamerplanter-infrastructure/references/proxmox-example/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://nolte.github.io/kamerplanter-infrastructure/de/references/proxmox-example/"/>
+    </url>
+    <url>
+        <loc>https://nolte.github.io/kamerplanter-infrastructure/de/</loc>
+        <lastmod>2026-11-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://nolte.github.io/kamerplanter-infrastructure/de/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://nolte.github.io/kamerplanter-infrastructure/"/>
+    </url>
+    <url>
+        <loc>https://nolte.github.io/kamerplanter-infrastructure/de/getting-started/</loc>
+        <lastmod>2026-11-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://nolte.github.io/kamerplanter-infrastructure/de/getting-started/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://nolte.github.io/kamerplanter-infrastructure/getting-started/"/>
+    </url>
+    <url>
+        <loc>https://nolte.github.io/kamerplanter-infrastructure/de/getting-started/proxmox/</loc>
+        <lastmod>2026-11-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://nolte.github.io/kamerplanter-infrastructure/de/getting-started/proxmox/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://nolte.github.io/kamerplanter-infrastructure/getting-started/proxmox/"/>
+    </url>
+    <url>
+        <loc>https://nolte.github.io/kamerplanter-infrastructure/de/guides/</loc>
+        <lastmod>2026-11-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://nolte.github.io/kamerplanter-infrastructure/de/guides/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://nolte.github.io/kamerplanter-infrastructure/guides/"/>
+    </url>
+    <url>
+        <loc>https://nolte.github.io/kamerplanter-infrastructure/de/guides/lifecycle/</loc>
+        <lastmod>2026-11-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://nolte.github.io/kamerplanter-infrastructure/de/guides/lifecycle/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://nolte.github.io/kamerplanter-infrastructure/guides/lifecycle/"/>
+    </url>
+    <url>
+        <loc>https://nolte.github.io/kamerplanter-infrastructure/de/guides/network/</loc>
+        <lastmod>2026-11-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://nolte.github.io/kamerplanter-infrastructure/de/guides/network/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://nolte.github.io/kamerplanter-infrastructure/guides/network/"/>
+    </url>
+    <url>
+        <loc>https://nolte.github.io/kamerplanter-infrastructure/de/guides/own-configuration/</loc>
+        <lastmod>2026-11-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://nolte.github.io/kamerplanter-infrastructure/de/guides/own-configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://nolte.github.io/kamerplanter-infrastructure/guides/own-configuration/"/>
+    </url>
+    <url>
+        <loc>https://nolte.github.io/kamerplanter-infrastructure/de/guides/troubleshooting/</loc>
+        <lastmod>2026-11-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://nolte.github.io/kamerplanter-infrastructure/de/guides/troubleshooting/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://nolte.github.io/kamerplanter-infrastructure/guides/troubleshooting/"/>
+    </url>
+    <url>
+        <loc>https://nolte.github.io/kamerplanter-infrastructure/de/references/</loc>
+        <lastmod>2026-11-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://nolte.github.io/kamerplanter-infrastructure/de/references/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://nolte.github.io/kamerplanter-infrastructure/references/"/>
+    </url>
+    <url>
+        <loc>https://nolte.github.io/kamerplanter-infrastructure/de/references/proxmox-appliance-image/</loc>
+        <lastmod>2026-11-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://nolte.github.io/kamerplanter-infrastructure/de/references/proxmox-appliance-image/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://nolte.github.io/kamerplanter-infrastructure/references/proxmox-appliance-image/"/>
+    </url>
+    <url>
+        <loc>https://nolte.github.io/kamerplanter-infrastructure/de/references/proxmox-appliance-vm/</loc>
+        <lastmod>2026-11-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://nolte.github.io/kamerplanter-infrastructure/de/references/proxmox-appliance-vm/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://nolte.github.io/kamerplanter-infrastructure/references/proxmox-appliance-vm/"/>
+    </url>
+    <url>
+        <loc>https://nolte.github.io/kamerplanter-infrastructure/de/references/proxmox-example/</loc>
+        <lastmod>2026-11-13</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://nolte.github.io/kamerplanter-infrastructure/de/references/proxmox-example/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://nolte.github.io/kamerplanter-infrastructure/references/proxmox-example/"/>
+    </url>
+</urlset>
