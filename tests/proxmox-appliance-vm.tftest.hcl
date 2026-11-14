@@ -80,3 +80,79 @@ run "rejects_malformed_address" {
 
   expect_failures = [var.ipv4_address]
 }
+
+# The appliance updates itself: an image of another release, newer or older,
+# must leave an existing VM and the data on its disk alone.
+run "create_for_image_changes" {
+  module {
+    source = "../src/modules/proxmox-appliance-vm"
+  }
+
+  command = apply
+}
+
+run "newer_image_keeps_vm" {
+  module {
+    source = "../src/modules/proxmox-appliance-vm"
+  }
+
+  command = plan
+
+  variables {
+    image_file_id = "local:import/kamerplanter-appliance-0.2.0.raw"
+  }
+
+  assert {
+    condition     = proxmox_virtual_environment_vm.this.disk[0].import_from == "local:import/kamerplanter-appliance-0.1.0.raw"
+    error_message = "A newer image must not change an existing VM."
+  }
+}
+
+run "older_image_keeps_vm" {
+  module {
+    source = "../src/modules/proxmox-appliance-vm"
+  }
+
+  command = plan
+
+  variables {
+    image_file_id = "local:import/kamerplanter-appliance-0.0.9.raw"
+  }
+
+  assert {
+    condition     = proxmox_virtual_environment_vm.this.disk[0].import_from == "local:import/kamerplanter-appliance-0.1.0.raw"
+    error_message = "An older image must not roll back an existing VM."
+  }
+}
+
+run "reinstall_generation_reinstalls_from_image" {
+  module {
+    source = "../src/modules/proxmox-appliance-vm"
+  }
+
+  command = plan
+
+  variables {
+    image_file_id        = "local:import/kamerplanter-appliance-0.0.9.raw"
+    reinstall_generation = 1
+  }
+
+  assert {
+    condition     = proxmox_virtual_environment_vm.this.disk[0].import_from == "local:import/kamerplanter-appliance-0.0.9.raw"
+    error_message = "Raising reinstall_generation must recreate the VM from the given image."
+  }
+}
+
+run "rejects_fractional_reinstall_generation" {
+  module {
+    source = "../src/modules/proxmox-appliance-vm"
+  }
+
+  command = plan
+
+  variables {
+    reinstall_generation = 1.5
+  }
+
+  expect_failures = [var.reinstall_generation]
+}

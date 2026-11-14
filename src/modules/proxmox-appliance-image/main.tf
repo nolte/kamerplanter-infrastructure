@@ -12,4 +12,9 @@ resource "proxmox_download_file" "this" {
   checksum_algorithm = var.checksum == null ? null : "sha256"
 
   upload_timeout = var.download_timeout
+
+  # The file name carries the release version and the checksum pins the
+  # content, so the upstream URL is not checked again on every refresh. An
+  # existing image stays in place even when its release asset is gone.
+  overwrite = false
 }

@@ -19,6 +19,12 @@ variable "image_checksum" {
   default     = null
 }
 
+variable "reinstall_generation" {
+  description = "Raise by one to reinstall the VM from the image of appliance_version. Destroys ALL data on the VM."
+  type        = number
+  default     = 0
+}
+
 variable "image_datastore_id" {
   description = "Datastore for the downloaded image (needs the \"import\" content type)."
   type        = string

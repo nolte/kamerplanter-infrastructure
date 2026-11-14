@@ -89,3 +89,16 @@ run "rejects_malformed_checksum" {
 
   expect_failures = [var.checksum]
 }
+
+run "does_not_recheck_upstream" {
+  module {
+    source = "../src/modules/proxmox-appliance-image"
+  }
+
+  command = plan
+
+  assert {
+    condition     = proxmox_download_file.this.overwrite == false
+    error_message = "An existing image must not depend on the upstream URL staying reachable."
+  }
+}

@@ -3,7 +3,7 @@ title: proxmox-appliance-image
 audience: [terraform-author, self-hoster]
 content_mode: reference
 track: developer-docs
-last_updated: 2026-11-13
+last_updated: 2026-11-14
 ---
 
 # `proxmox-appliance-image`
@@ -32,6 +32,7 @@ Lädt das Raw-Disk-Image eines Appliance-Releases in einen Proxmox-VE-Datastore 
 ## Verhalten
 
 - Eine Änderung von `file_name` ersetzt die Datei: Die neue wird heruntergeladen, die alte gelöscht.
+- Eine vorhandene Datei wird nicht erneut gegen die URL geprüft (`overwrite = false`): Sie bleibt erhalten, auch wenn das Release-Asset nicht mehr verfügbar ist.
 - `terraform destroy` löscht die Datei aus dem Datastore.
 
 ## Benötigte Rechte
