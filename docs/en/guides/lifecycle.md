@@ -3,7 +3,7 @@ title: Update, resize, and remove
 audience: [self-hoster, terraform-author]
 content_mode: how-to
 track: user-docs
-last_updated: 2026-11-13
+last_updated: 2026-11-14
 ---
 
 # Update, resize, and remove
@@ -24,6 +24,8 @@ image_checksum    = "<sha256 of 0.2.0>"
 
 `terraform apply` then downloads the new image and deletes the old image file. The running VM is **not** touched: the module ignores a changed image for existing VMs.
 
+The same holds the other way round: if `terraform.tfvars` still names an older release than the one the appliance has updated itself to, `terraform apply` does **not** roll the appliance back.
+
 ## Give the appliance more resources
 
 Change `cores`, `memory`, or `disk_size` in `terraform.tfvars` and run `terraform apply`. Terraform changes the VM in place; the provider may restart the VM to apply new CPU or memory settings.
@@ -36,16 +38,23 @@ disk_size = 64     # GiB
 
 The disk can only grow. Setting a smaller `disk_size` than the current one fails.
 
-## Start over with a fresh VM
+## Reinstall a specific release
 
 !!! danger "This deletes all Kamerplanter data on the VM"
-    Create a backup in Kamerplanter first.
+    Create a backup in Kamerplanter first. Terraform can't change the release of a running appliance; it can only replace the VM with a new one.
 
-To replace the VM with one created from the current image:
+To go back to an older release, or to start over from a release of your choice, set that release and raise `reinstall_generation` by one:
 
-```bash
-terraform apply -replace='module.appliance.proxmox_virtual_environment_vm.this'
+```hcl
+appliance_version    = "0.1.0"
+image_url            = "https://github.com/nolte/kamerplanter-appliance/releases/download/v0.1.0/disk.raw"
+image_checksum       = "<sha256 of 0.1.0>"
+reinstall_generation = 1   # was 0
 ```
+
+`terraform apply` shows `must be replaced` for `module.appliance.proxmox_virtual_environment_vm.this`. Confirm only if you mean it. Afterwards, leave `reinstall_generation` at its new value: **every** change, including setting it back, reinstalls again.
+
+`terraform apply -replace='module.appliance.proxmox_virtual_environment_vm.this'` also reinstalls once, without changing the file. It too uses the release in `appliance_version`, **not** the one the appliance is running: if the appliance has updated itself since, this is a downgrade. Replacing or tainting `module.appliance.terraform_data.reinstall` reinstalls as well.
 
 ## Remove the appliance
 

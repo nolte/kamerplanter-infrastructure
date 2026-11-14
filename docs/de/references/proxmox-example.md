@@ -3,7 +3,7 @@ title: Beispiel src/scripts/proxmox
 audience: [self-hoster]
 content_mode: reference
 track: user-docs
-last_updated: 2026-11-13
+last_updated: 2026-11-14
 ---
 
 # Beispiel `src/scripts/proxmox`
@@ -20,6 +20,7 @@ Gesetzt in `terraform.tfvars`.
 | `appliance_version` | `string` | Pflicht | Image-Modul, Teil von `file_name` |
 | `image_url` | `string` | Pflicht | Image-Modul, `image_url` |
 | `image_checksum` | `string` | `null` | Image-Modul, `checksum` |
+| `reinstall_generation` | `number` | `0` | VM-Modul, `reinstall_generation`; **Erhöhen löscht alle Daten auf der VM** |
 | `image_datastore_id` | `string` | `"local"` | Image-Modul, `datastore_id` |
 | `vm_datastore_id` | `string` | `"local-lvm"` | VM-Modul, `datastore_id` |
 | `vm_name` | `string` | `"kamerplanter"` | VM-Modul, `name` |

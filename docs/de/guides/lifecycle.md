@@ -3,7 +3,7 @@ title: Aktualisieren, vergrößern, entfernen
 audience: [self-hoster, terraform-author]
 content_mode: how-to
 track: user-docs
-last_updated: 2026-11-13
+last_updated: 2026-11-14
 ---
 
 # Aktualisieren, vergrößern, entfernen
@@ -24,6 +24,8 @@ image_checksum    = "<sha256 von 0.2.0>"
 
 `terraform apply` lädt dann das neue Image herunter und löscht die alte Image-Datei. Die laufende VM bleibt **unberührt**: Das Modul ignoriert ein geändertes Image bei bestehenden VMs.
 
+Das gilt auch umgekehrt: Steht in `terraform.tfvars` noch ein älteres Release als das, auf das sich die Appliance selbst aktualisiert hat, setzt `terraform apply` die Appliance **nicht** zurück.
+
 ## Der Appliance mehr Ressourcen geben
 
 Ändere `cores`, `memory` oder `disk_size` in `terraform.tfvars` und führe `terraform apply` aus. Terraform ändert die VM direkt; der Provider startet die VM unter Umständen neu, um neue CPU- oder Speichereinstellungen anzuwenden.
@@ -36,16 +38,23 @@ disk_size = 64     # GiB
 
 Die Disk kann nur wachsen. Ein kleinerer `disk_size` als der aktuelle schlägt fehl.
 
-## Mit einer frischen VM neu anfangen
+## Ein bestimmtes Release neu installieren
 
 !!! danger "Das löscht alle Kamerplanter-Daten auf der VM"
-    Lege vorher in Kamerplanter ein Backup an.
+    Lege vorher in Kamerplanter ein Backup an. Terraform kann das Release einer laufenden Appliance nicht ändern, sondern die VM nur durch eine neue ersetzen.
 
-So ersetzt du die VM durch eine, die aus dem aktuellen Image angelegt wird:
+Um zu einem älteren Release zurückzukehren oder mit einem Release deiner Wahl neu anzufangen, trage dieses Release ein und erhöhe `reinstall_generation` um eins:
 
-```bash
-terraform apply -replace='module.appliance.proxmox_virtual_environment_vm.this'
+```hcl
+appliance_version    = "0.1.0"
+image_url            = "https://github.com/nolte/kamerplanter-appliance/releases/download/v0.1.0/disk.raw"
+image_checksum       = "<sha256 von 0.1.0>"
+reinstall_generation = 1   # vorher 0
 ```
+
+`terraform apply` zeigt für `module.appliance.proxmox_virtual_environment_vm.this` ein `must be replaced`. Bestätige nur, wenn du das wirklich willst. Lass `reinstall_generation` danach auf dem neuen Wert stehen: **Jede** Änderung, auch das Zurücksetzen, installiert erneut.
+
+`terraform apply -replace='module.appliance.proxmox_virtual_environment_vm.this'` installiert ebenfalls einmalig neu, ohne die Datei zu ändern. Auch das verwendet das Release aus `appliance_version`, **nicht** das, auf dem die Appliance gerade läuft: Hat sie sich seitdem selbst aktualisiert, ist das ein Downgrade. Ein Ersetzen oder Taint von `module.appliance.terraform_data.reinstall` installiert ebenfalls neu.
 
 ## Appliance entfernen
 

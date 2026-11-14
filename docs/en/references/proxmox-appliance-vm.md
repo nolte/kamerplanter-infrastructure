@@ -3,7 +3,7 @@ title: proxmox-appliance-vm
 audience: [terraform-author, self-hoster]
 content_mode: reference
 track: developer-docs
-last_updated: 2026-11-13
+last_updated: 2026-11-14
 ---
 
 # `proxmox-appliance-vm`
@@ -18,6 +18,7 @@ Creates the appliance VM, imports its system disk from an image file, and passes
 |---|---|---|---|
 | `node_name` | `string` | required | Node that runs the VM. |
 | `image_file_id` | `string` | required | Volume ID of the image, the `file_id` output of `proxmox-appliance-image`. Read only when the VM is created. |
+| `reinstall_generation` | `number` | `0` | Raise by one to reinstall the VM from `image_file_id`. **Any change destroys the VM and all data on its disk.** |
 | `name` | `string` | `"kamerplanter"` | VM name, also the hostname of the appliance. |
 | `vm_id` | `number` | `null` | VM ID; `null` lets Proxmox VE pick the next free one. |
 | `description` | `string` | `"Kamerplanter appliance, managed by Terraform"` | Description in the Proxmox VE web interface. |
@@ -46,7 +47,8 @@ Creates the appliance VM, imports its system disk from an image file, and passes
 
 ## Behaviour
 
-- A changed `image_file_id` is ignored for an existing VM: a newer image never replaces the VM and its data.
+- A changed `image_file_id` is ignored for an existing VM: a different image, newer or older, never replaces the VM and its data.
+- A changed `reinstall_generation` replaces the VM. The new VM imports its disk from the current `image_file_id`; the old disk and its data are deleted.
 - The VM uses the machine type `q35`, SeaBIOS, a VirtIO SCSI single controller, the CPU type `x86-64-v2-AES`, and a VirtIO network card.
 - The system disk is attached as `scsi0` with IO thread, discard, and SSD emulation.
 - `terraform destroy` deletes the VM and its disk.

@@ -7,4 +7,9 @@ image_checksum    = "<sha256 from the release checksum file>"
 # vm_datastore_id = "local-lvm"
 # ipv4_address    = "192.168.1.50/24"
 # ipv4_gateway    = "192.168.1.1"
+
+# Raise by one to reinstall the VM from appliance_version, for example to go
+# back to an older release. DESTROYS ALL DATA on the VM; back up first.
+# reinstall_generation = 0
+
 ssh_public_keys = ["ssh-ed25519 AAAA... admin@example"]

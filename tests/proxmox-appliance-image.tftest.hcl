@@ -89,3 +89,33 @@ run "rejects_malformed_checksum" {
 
   expect_failures = [var.checksum]
 }
+
+run "keeps_size_check_without_checksum" {
+  module {
+    source = "../src/modules/proxmox-appliance-image"
+  }
+
+  command = plan
+
+  assert {
+    condition     = proxmox_download_file.this.overwrite == true
+    error_message = "Without a checksum the size check against the URL is the only integrity check."
+  }
+}
+
+run "does_not_recheck_upstream_with_checksum" {
+  module {
+    source = "../src/modules/proxmox-appliance-image"
+  }
+
+  command = plan
+
+  variables {
+    checksum = "0000000000000000000000000000000000000000000000000000000000000000"
+  }
+
+  assert {
+    condition     = proxmox_download_file.this.overwrite == false
+    error_message = "With a checksum, an existing image must not depend on the upstream URL staying reachable."
+  }
+}

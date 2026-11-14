@@ -10,6 +10,12 @@ locals {
   ipv4 = coalesce(local.static_ipv4, try(local.agent_ipv4[0], null), "unknown")
 }
 
+# Explicit reinstall: a change of reinstall_generation replaces the VM, which
+# then imports its disk from the current image_file_id.
+resource "terraform_data" "reinstall" {
+  input = var.reinstall_generation
+}
+
 resource "proxmox_virtual_environment_vm" "this" {
   node_name   = var.node_name
   vm_id       = var.vm_id
@@ -84,8 +90,10 @@ resource "proxmox_virtual_environment_vm" "this" {
   }
 
   lifecycle {
-    # The appliance updates itself. A newer image must not replace a running
-    # VM and with it the data on its disk; it only applies to new VMs.
-    ignore_changes = [disk[0].import_from]
+    # The appliance updates itself. A different image, newer or older, must
+    # not replace a running VM and with it the data on its disk; it only
+    # applies to new VMs and to an explicit reinstall.
+    ignore_changes       = [disk[0].import_from]
+    replace_triggered_by = [terraform_data.reinstall]
   }
 }

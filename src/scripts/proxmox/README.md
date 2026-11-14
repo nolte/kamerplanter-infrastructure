@@ -29,4 +29,6 @@ terraform apply
 
 ## Updates
 
-The appliance updates itself. Changing `appliance_version` downloads the new image, but existing VMs keep their disk; the new image is used only for VMs created afterwards.
+The appliance updates itself. Changing `appliance_version` downloads the new image, but existing VMs keep their disk; the new image is used only for VMs created afterwards. An older `appliance_version` doesn't roll the appliance back either.
+
+To deliberately reinstall the VM from the release in `appliance_version`, raise `reinstall_generation` by one. This **deletes all data on the VM**; see the [lifecycle guide](https://nolte.github.io/kamerplanter-infrastructure/guides/lifecycle/).
