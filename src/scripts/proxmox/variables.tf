@@ -23,6 +23,7 @@ variable "reinstall_generation" {
   description = "Raise by one to reinstall the VM from the image of appliance_version. Destroys ALL data on the VM."
   type        = number
   default     = 0
+  nullable    = false
 }
 
 variable "image_datastore_id" {

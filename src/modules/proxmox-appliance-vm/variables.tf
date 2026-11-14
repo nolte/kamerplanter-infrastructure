@@ -36,6 +36,7 @@ variable "reinstall_generation" {
   description = "Raise by one to reinstall the VM from image_file_id, for example to go back to an older appliance release. Any change of this value destroys the VM and ALL data on its disk. Leave it unchanged otherwise."
   type        = number
   default     = 0
+  nullable    = false
 
   validation {
     condition     = var.reinstall_generation >= 0 && floor(var.reinstall_generation) == var.reinstall_generation

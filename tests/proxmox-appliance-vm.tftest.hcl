@@ -82,8 +82,11 @@ run "rejects_malformed_address" {
 }
 
 # The appliance updates itself: an image of another release, newer or older,
-# must leave an existing VM and the data on its disk alone.
+# must leave an existing VM and the data on its disk alone. These runs share
+# a state of their own, so they start from a freshly created VM.
 run "create_for_image_changes" {
+  state_key = "image_changes"
+
   module {
     source = "../src/modules/proxmox-appliance-vm"
   }
@@ -92,6 +95,8 @@ run "create_for_image_changes" {
 }
 
 run "newer_image_keeps_vm" {
+  state_key = "image_changes"
+
   module {
     source = "../src/modules/proxmox-appliance-vm"
   }
@@ -109,6 +114,8 @@ run "newer_image_keeps_vm" {
 }
 
 run "older_image_keeps_vm" {
+  state_key = "image_changes"
+
   module {
     source = "../src/modules/proxmox-appliance-vm"
   }
@@ -126,6 +133,8 @@ run "older_image_keeps_vm" {
 }
 
 run "reinstall_generation_reinstalls_from_image" {
+  state_key = "image_changes"
+
   module {
     source = "../src/modules/proxmox-appliance-vm"
   }
@@ -140,6 +149,35 @@ run "reinstall_generation_reinstalls_from_image" {
   assert {
     condition     = proxmox_virtual_environment_vm.this.disk[0].import_from == "local:import/kamerplanter-appliance-0.0.9.raw"
     error_message = "Raising reinstall_generation must recreate the VM from the given image."
+  }
+}
+
+# Without a changed image, only the VM's identity shows a reinstall: the
+# override applies to a newly created VM only, an in-place update keeps the
+# ID from the state.
+run "reinstall_generation_alone_replaces_vm" {
+  state_key = "image_changes"
+
+  module {
+    source = "../src/modules/proxmox-appliance-vm"
+  }
+
+  command = apply
+
+  variables {
+    reinstall_generation = 1
+  }
+
+  override_resource {
+    target = proxmox_virtual_environment_vm.this
+    values = {
+      id = "reinstalled"
+    }
+  }
+
+  assert {
+    condition     = proxmox_virtual_environment_vm.this.id == "reinstalled"
+    error_message = "Raising reinstall_generation alone must replace the VM."
   }
 }
 

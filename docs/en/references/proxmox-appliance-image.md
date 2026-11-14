@@ -32,7 +32,7 @@ Downloads the raw disk image of an appliance release onto a Proxmox VE datastore
 ## Behaviour
 
 - Changing `file_name` replaces the file: the new one is downloaded, the old one deleted.
-- An existing file is not checked against the URL again (`overwrite = false`): it stays in place even when the release asset is no longer available.
+- With a `checksum`, an existing file is not checked against the URL again (`overwrite = false`): it stays in place even when the release asset is no longer available. Without a checksum, the provider compares the file size with the URL on every refresh and downloads again on a difference.
 - `terraform destroy` deletes the file from the datastore.
 
 ## Required rights

@@ -32,7 +32,7 @@ Lädt das Raw-Disk-Image eines Appliance-Releases in einen Proxmox-VE-Datastore 
 ## Verhalten
 
 - Eine Änderung von `file_name` ersetzt die Datei: Die neue wird heruntergeladen, die alte gelöscht.
-- Eine vorhandene Datei wird nicht erneut gegen die URL geprüft (`overwrite = false`): Sie bleibt erhalten, auch wenn das Release-Asset nicht mehr verfügbar ist.
+- Mit `checksum` wird eine vorhandene Datei nicht erneut gegen die URL geprüft (`overwrite = false`): Sie bleibt erhalten, auch wenn das Release-Asset nicht mehr verfügbar ist. Ohne Checksumme vergleicht der Provider bei jedem Refresh die Dateigröße mit der URL und lädt bei einer Abweichung neu.
 - `terraform destroy` löscht die Datei aus dem Datastore.
 
 ## Benötigte Rechte

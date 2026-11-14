@@ -54,7 +54,7 @@ reinstall_generation = 1   # vorher 0
 
 `terraform apply` zeigt für `module.appliance.proxmox_virtual_environment_vm.this` ein `must be replaced`. Bestätige nur, wenn du das wirklich willst. Lass `reinstall_generation` danach auf dem neuen Wert stehen: **Jede** Änderung, auch das Zurücksetzen, installiert erneut.
 
-Für eine einmalige Neuinstallation aus dem aktuellen Release, ohne die Datei zu ändern, bewirkt `terraform apply -replace='module.appliance.proxmox_virtual_environment_vm.this'` dasselbe.
+`terraform apply -replace='module.appliance.proxmox_virtual_environment_vm.this'` installiert ebenfalls einmalig neu, ohne die Datei zu ändern. Auch das verwendet das Release aus `appliance_version`, **nicht** das, auf dem die Appliance gerade läuft: Hat sie sich seitdem selbst aktualisiert, ist das ein Downgrade. Ein Ersetzen oder Taint von `module.appliance.terraform_data.reinstall` installiert ebenfalls neu.
 
 ## Appliance entfernen
 
